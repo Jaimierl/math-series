@@ -35,3 +35,24 @@ def lucas(n):
         return (lucas(n-1)+lucas(n-2))
     else:
         return ("Inconceivable!")
+
+def sum_series(n, a=0, b=1):
+    # Setting a value for a and b here makes it so the user does not have to set a value aka they are optional.
+    if (a==0 and b==1) or (b==0 and a==1):
+        return fibonacci(n)
+    elif (a==2 and b==1) or (b==2 and a==1):
+        return lucas(n)
+    elif a<0 or b<0 or n<0:
+        return ("Negative numbers are not supported")
+    elif (a>0 and b>=0) or (b>0 and a>=0) or (b>0 and a>0) and n>0:
+        if n==0:
+             return a
+        elif n==1:
+            return b
+        elif n>1:
+            return (sum_series(n-1, a, b)+sum_series(n-2, a, b))
+
+print (sum_series(5,3,4))
+
+# print (sum_series(5,3,4))
+#3,4,7,11,18,29
